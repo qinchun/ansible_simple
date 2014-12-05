@@ -1,6 +1,6 @@
 - name: Jenkins
   hosts: jenkins
   roles:
-    - ansible-jenkins
+    - role_dir
    
   

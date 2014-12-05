@@ -1,0 +1,7 @@
+---
+# Install Jenkins dependencies
+- name: Install dependencies
+  sudo: false
+  local_action: "{{ ansible_pkg_mgr }} pkg={{ item }} state=installed"
+  #action: ping
+  with_items: jenkins.deb.dependencies

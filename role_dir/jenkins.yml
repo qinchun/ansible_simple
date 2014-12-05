@@ -1,0 +1,6 @@
+---
+# Add Jenkins repository
+- include: repo.yml
+  when: ansible_distribution in [ 'Debian', 'Ubuntu' ]
+
+
