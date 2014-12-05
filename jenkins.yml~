@@ -1,6 +1,6 @@
 - name: Jenkins
   hosts: jenkins
-  roles:
-    - ansible-jenkins
+  #roles:
+  #  - ansible-jenkins
    
   
