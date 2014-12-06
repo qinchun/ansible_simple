@@ -1,10 +1,28 @@
 - name: Jenkins
   hosts: jenkins
   tasks:
-    - name: Restart Jenkins
+    - name: Install python-software-properties
       sudo: false
-      command: java -jar {{ jenkins.cli_dest }} -s http://localhost:8080 safe-restart
-  #roles:
-  #  - ansible-jenkins
+      #local_action: "{{ ansible_pkg_mgr }} pkg=python-software-properties state=installed"
+      action: ping
+
+    - name: Install python-pycurl
+      sudo: false
+      local_action: "{{ ansible_pkg_mgr }} pkg=python-pycurl state=installed"
+      #action: ping
+    # Add Jenkins repository key
+    - name: Add jenkins apt-key
+      sudo: false
+     # local_action: apt_key data="{{ lookup('file', 'jenkins-ci.org.key') }}" state=present
+      action: ping
+
+    # Add Jenkins repository
+    - name: Add Jenkins repository
+      sudo: false
+      local_action: apt_repository repo='{{ jenkins.deb.repo }}' state=present update_cache=yes
+      #action: ping
+     
+      #roles:
+      #  - ansible-jenkins
    
   

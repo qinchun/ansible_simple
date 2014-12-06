@@ -15,12 +15,6 @@
       sudo: false
      # local_action: apt_key data="{{ lookup('file', 'jenkins-ci.org.key') }}" state=present
       action: ping
-
-    # Add Jenkins repository
-    - name: Add Jenkins repository
-      sudo: false
-      local_action: apt_repository repo='{{ jenkins.deb.repo }}' state=present update_cache=yes
-      #action: ping
      
       #roles:
       #  - ansible-jenkins
