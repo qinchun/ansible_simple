@@ -1,8 +1,9 @@
 - name: Jenkins
   hosts: jenkins
   tasks:
-    - name: ensure apache is running
-      service: name=httpd state=started
+    -name: Restart Jenkins
+    sudo: false
+    command: java -jar {{ jenkins.cli_dest }} -s http://localhost:8080 safe-restart
   #roles:
   #  - ansible-jenkins
    
